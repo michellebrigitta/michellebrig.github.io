@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(#b7d2e5, #dbbdc0, #f5d996, #917262, #917262, #513a2f, #3a2316);
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+}
+
+header .logo {
+    scale: 30%;
+    width: 50px;
+    height: auto;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    list-style: none;
+    margin-left: 20px;
+}
+
+header ul li a {
+    text-decoration: none;
+    padding: 6px 15px;
+    color: white;
+    border-radius: 25px;
+}
+
+header ul li a:hover, header ul li a.active {
+    background: #3a3a3a;
+    color: #fbdcfe;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    transform: translateY(30px);
+    background: linear-gradient(to top, #917262, #8d8e62, transparent);
+    z-index: 1000;
+}
+
+section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+section img#clouds {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+section img#meadows_front {
+    z-index: 10;
+}
+
+section #text {
+    position: absolute;
+    color: white;
+    white-space: nowrap;
+    font-size: 7.5vw;
+    transform: translateY(100px);
+}
+
+section #button {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 80px;
+    background: #dbbdc0;
+    color: white;
+    font-size: 3em;
+    font-style: italic;
+    position: absolute;
+    z-index: 10;
+}
+
+div section {
+    height: 80vh;
+    position: relative;
+}
