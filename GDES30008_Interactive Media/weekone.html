@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Interactive Media</title>
+    <link rel="stylesheet" href="weeks.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo"><img src="Elements/small logo.png"/> </a>
+        <ul>
+            <li> <a href="#" class="active"> Interactive Media </a></li>
+            <li> <a href="#"> Menu </a></li>
+        </ul>
+    </header>
+    <div class="container">
+
+        <div class="slide">
+
+            
+            <div class="item" style="background-image: url(Elements/hunt1.png);">
+                <div class="content">
+                    <div class="name">Hunt'n'Gather #1!</div>
+                    <div class="des"> In the first Hunt'n'Gather, we were told to search for noteworthy interactivities and to watch coming-of-age movies. 
+                        For human-computer interactivity, I found my research in something I have experienced on my own, The Crawling Man in NGV. Upon
+                        seeing this artwork, it really left an impression on me as it is very unsettlingly interesting. You can see dozens of box stacked up
+                        with a virtual reality of the crawling man. Additionally, you can also scan a barcode and therefore, the crawling man will be with you
+                        wherever you go. The digital screen is actually programmed to crawl for the length of the artist's life (36 years). The other two, Apple
+                        Vision Pro and Ray Ban Meta Glasses were something I am really interested in and makes me question what will the future society look like.
+                        For the movies, Iron Man is one of my all time favorite movie and so I was really happy to watch it again. I have always noticed how 
+                        advanced the technologies were, but I never wandered how they actually work, so I thought it was really enticing to think about. </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Elements/slide1.png);">
+                <div class="content">
+                    <div class="name">WOT is Interactive Media?</div>
+                    <div class="des"> The first week begins by understanding the term "Interactive Media". Interactive media represents a computational 
+                        approach influenced by cybernetics, autopoiesis, and system theories, challenging traditional understandings of reasoning, cognition, 
+                        perception, memory, emotions, and affection. It encompasses various concepts such as interaction design, new media, interactivity, 
+                        human-computer interaction, cyberculture, and digital culture, while also potentially incorporating augmented reality and virtual reality. 
+                        The term "interactive media" encompasses any medium where there is an interface between the user/audience and the content, extending beyond 
+                        electronic or digital formats to include analog forms like board games, pop-up books, flip books, and constellation wheels. </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Elements/hunt1.png);">
+                <div class="content">
+                    <div class="name">Hunt'n'Gather #1!</div>
+                    <div class="des"> In the first Hunt'n'Gather, we were told to search for noteworthy interactivities and to watch coming-of-age movies. 
+                        For human-computer interactivity, I found my research in something I have experienced on my own, The Crawling Man in NGV. Upon
+                        seeing this artwork, it really left an impression on me as it is very unsettlingly interesting. You can see dozens of box stacked up
+                        with a virtual reality of the crawling man. Additionally, you can also scan a barcode and therefore, the crawling man will be with you
+                        wherever you go. The digital screen is actually programmed to crawl for the length of the artist's life (36 years). The other two, Apple
+                        Vision Pro and Ray Ban Meta Glasses were something I am really interested in and makes me question what will the future society look like.
+                        For the movies, Iron Man is one of my all time favorite movie and so I was really happy to watch it again. I have always noticed how 
+                        advanced the technologies were, but I never wandered how they actually work, so I thought it was really enticing to think about! </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Elements/humantag.png);">
+                <div class="content">
+                    <div class="name">Hello World!</div>
+                    <div class="des"> During this activity, we were divided into groups to do a relay race in grabbing HTML tags to form a complete website structure.
+                        My group successfully brought all needed tags but we were not able to figure out how to place images side by side :D
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Elements/gesture.png);">
+                <div class="content">
+                    <div class="name">Human Computer in your Face!</div>
+                    <div class="des"> In this workshop, we were given pieces of paper to write an activity we did that day. Then, randomly each person will pick the 
+                        paper to recreate the gesture of the activity, without actually using the items. Most people wrote activities that they do with their phones,
+                        like swiping or scrolling on their phones, which made it really easy to guess. However, some people also wrote interesting ones like unlocking
+                        a car or locking the door. This was the highlight of week one!
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Elements/slide1.png);">
+                <div class="content">
+                    <div class="name">WOT is Interactive Media?</div>
+                    <div class="des"> The first week begins by understanding the term "Interactive Media". Interactive media represents a computational 
+                        approach influenced by cybernetics, autopoiesis, and system theories, challenging traditional understandings of reasoning, cognition, 
+                        perception, memory, emotions, and affection. It encompasses various concepts such as interaction design, new media, interactivity, 
+                        human-computer interaction, cyberculture, and digital culture, while also potentially incorporating augmented reality and virtual reality. 
+                        The term "interactive media" encompasses any medium where there is an interface between the user/audience and the content, extending beyond 
+                        electronic or digital formats to include analog forms like board games, pop-up books, flip books, and constellation wheels. </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+    </div>
+    
+    <script> 
+    let next = document.querySelector('.next')
+        let prev = document.querySelector('.prev')
+        
+        next.addEventListener('click', function(){
+            let items = document.querySelectorAll('.item')
+            document.querySelector('.slide').appendChild(items[0])
+        })
+        
+        prev.addEventListener('click', function(){
+            let items = document.querySelectorAll('.item')
+            document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+        })
+    </script>
+
+</body>
+</html>
