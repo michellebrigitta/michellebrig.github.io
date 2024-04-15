@@ -1,0 +1,245 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    background: linear-gradient(#b7d2e5, #dbbdc0, #f5d996);
+    height: 100vh;
+    width: 100%;
+    cursor: url("Elements/cursor.png"), auto;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+}
+
+header .logo {
+    scale: 30%;
+    width: 50px;
+    height: auto;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+header .tag {
+    position: absolute;
+    top: 32px;
+    left: 150px;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    list-style: none;
+    margin-left: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+header ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 6px 15px;
+    color: white;
+    border-radius: 25px;
+    text-align: center;
+}
+
+header ul li ul.dropdown li {
+    display: inline-block;
+    transform: translateX(-7px);
+}
+
+header ul li ul.dropdown {
+    display: none;
+    background: #3a3a3a;
+    width: auto;
+    left: 145px;
+    padding: 5px 5px 5px 5px;
+    position: absolute;
+    z-index: 999;
+    border-radius: 0px;
+    justify-content: right;
+}
+
+header ul li:hover ul.dropdown {
+    display: block;
+    align-items: center;
+}
+
+header ul li a:hover, header ul li a.active {
+    background: #3a3a3a;
+    color: #fbdcfe;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100vh;
+    background: #f5f5f5;
+    box-shadow: 0 30px 50px #dbdbdb;
+}
+
+.container .slide .item{
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #3a3a3a;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.slide .item:nth-child(1),
+.slide .item:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide .item:nth-child(3){
+    left: 50%;
+}
+.slide .item:nth-child(4){
+    left: calc(50% + 220px);
+}
+.slide .item:nth-child(5){
+    left: calc(50% + 440px);
+}
+
+/* here n = 0, 1, 2, 3,... */
+.slide .item:nth-child(n + 6){
+    left: calc(50% + 660px);
+    opacity: 0;
+}
+
+.item .content{
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 500px;
+    text-align: left;
+    color: #3a3a3a;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
+}
+
+.item .button1{
+    z-index: 1000;
+    scale: 150%;
+    width: 100vh;
+    top: 72%;
+    left: 29%;
+    position: absolute;
+    text-align: center;
+}
+
+.item .button1 button {
+    padding: 5px 5px 5px 5px;
+    background-color: #ffe87c;
+    border-radius: 10px;
+}
+
+.slide .item:nth-child(2) .content{
+    display: block;
+}
+
+.content .name{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+    background: #fbdcfe;
+    box-shadow: 20px 30px 50px #3a3a3a;
+    padding: 20px;
+}
+
+.content .des{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+    background-color: #fbdcfe;
+    padding: 20px;
+    box-shadow: 20px 30px 50px #3a3a3a;
+}
+
+.content button{
+    padding: 20px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+
+@keyframes animate {
+    from{
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+.button{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+}
+
+.button button{
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    border: 1px solid #fff;
+    transition: 0.3s;
+}
+
+.button button:hover{
+    background: #fff;
+    color: #fff;
+}

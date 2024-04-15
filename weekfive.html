@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Interactive Media</title>
+    <link rel="stylesheet" href="weeks.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo"><img src="Elements/small logo.png"/> </a>
+        <h2 class="tag"> WEEK FIVE </h2>
+        <ul>
+            <li> <a href="#" class="active"> BTW: Behind The Web! </a></li>
+            <li> <a href="#" class="active"> How's the growth of our flower? &#x25BE; </a>
+                <ul class="dropdown">
+                    <li> <a href="weekone.html"> Week 1 </a></li>
+                    <li> <a href="weektwo.html"> Week 2 </a></li>
+                    <li> <a href="weekthree.html"> Week 3 </a></li>
+                    <li> <a href="weekfour.html"> Week 4 </a></li>
+                    <li> <a href="weekfive.html"> Week 5 </a></li>
+                    <li> <a href="weeksix.html"> Week 6 </a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+
+    <div class="container">
+
+        <div class="slide">
+
+            
+            <div class="item" style="background-image: url(Elements/imageload.gif);">
+                <div class="content">
+                    <div class="name"> Live link: Image drawing </div>
+                    <div class="des"> <button> <a href="http://127.0.0.1:8530" target="_blank"> Click here to go to the sketch! </a> </button> </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Elements/slide5.png);">
+                <div class="content">
+                    <div class="name"> COMPUTER VISION & THE BLACK MIRROR </div>
+                    <div class="des"> In the fifth week's seminar, we learnt about computer vision: how the system sees us as human. This technology can be found 
+                        in face recognition devices, webcams as well as creative coding artworks that utilize reflections or mirror. Computers are able to see human's 
+                        faces and from there, map out coordinates to figure out the placement of the person's eyes, nose, lips, and other facial features. With that 
+                        being said, the facial recogniton feature on our phone sometimes don't work if we use it at a low, high, or distorted angle: because it has 
+                        stored the coordinates of our facial features. 
+                        <br> </br>
+                        <b> THE BIG QUESTION: what can we create from this technology? how can we code a system that utilizes
+                            a camera, that recognizes what is in front of the screen? </b>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Elements/hunt5.png);">
+                <div class="content">
+                    <div class="name"> Hunt'n'Gather #5! </div>
+                    <div class="des"> For the fifth Hunt'n'Gather, I looked at 3 engaging generative art that engage with reflection or mirrors. I was mostly attracted to physical installations
+                        as for the previous weeks, I have already looked at digital websites on screens, so this time I wanted to research something new, something away from the screen. The interesting
+                        installations I found are: Mirror, Mirror by SOFTlab, House of Mirrors by NEON, and Infinity Mirror Rooms by Yayoi Kusuma. All these three installations use mirrors as their 
+                        premise. Seeing all these installations, I realized how easy time and space can be fabricated if we were to use mirrors and reflections. Digitally, this also leads to the question 
+                        of how easy it is to fabricate one's feature within computing systems with the help of webcams, especially with the expanding use of Artificial Intelligence.
+                        <br> </br>
+                        On the Look! Section, I looked at the Slave to the Algorithm website and found some interesting pieces of interactivity such as: worm-like word cursor, head-recognition feature
+                         that allows the shapes on the site to move according to user's head, different graphs produced by different keywords, and COVID virus-like cursor that disperses as the user moves it.
+                     </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Elements/userinput.png);">
+                <div class="content">
+                    <div class="name"> User Input </div>
+                    <div class="des"> During this week's workshop, we delve deeper into the workings of p5js, as we learn about controlling and presenting user input within our sketches.
+                        I created a canvas which accommodates drawing when the mouse is pressed, but stops drawing when it is no longer pressed. That way, the user have more control over 
+                        what they are drawing, unlike last week's sketches which utilizes a continuous line. Furthermore, I also learned to utilize keyboards to drop coordinates with numbers,
+                        creating a drawing by number sketch!
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Elements/imagesound.png);">
+                <div class="content">
+                    <div class="name"> Image & Sound </div>
+                    <div class="des"> Additionally, we also learned how to add images & video with the combination of keyboard control. Here, we use two images: I chose an image of my dog because why
+                        not! The first image is attached to our cursor and we can draw with it by dragging it around. When the mouse is clicked, the image switches and goes back again to the first image 
+                        when the mouse is no longer pressed. Thus, in this workshop I learnt the ability to manipulate image within mouse clicks, which, with attunements, can be quite powerful!
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Elements/drawnumber.gif);">
+                <div class="content">
+                    <div class="name"> Live link: draw by number! </div>
+                    <div class="des"> <button> <a href="http://127.0.0.1:8136" target="_blank"> Click here to go to the sketch! </a> </button> </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-arrow-left"> <b> Prev </b> </i></button>
+            <button class="next"><i class="fa-solid fa-arrow-right"> <b> Next </b> </i></button>
+        </div>
+
+    </div>
+    
+    <script> 
+    let next = document.querySelector('.next')
+        let prev = document.querySelector('.prev')
+        
+        next.addEventListener('click', function(){
+            let items = document.querySelectorAll('.item')
+            document.querySelector('.slide').appendChild(items[0])
+        })
+        
+        prev.addEventListener('click', function(){
+            let items = document.querySelectorAll('.item')
+            document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+        })
+    </script>
+
+</body>
+</html>
