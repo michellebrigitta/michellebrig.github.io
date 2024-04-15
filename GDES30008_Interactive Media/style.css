@@ -42,18 +42,45 @@ header ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 header ul li {
     list-style: none;
     margin-left: 20px;
+    display: inline-block;
+    position: relative;
 }
 
 header ul li a {
+    display: block;
     text-decoration: none;
     padding: 6px 15px;
     color: white;
     border-radius: 25px;
+    text-align: center;
+}
+
+header ul li ul.dropdown li {
+    display: inline-block;
+    transform: translateX(-7px);
+}
+
+header ul li ul.dropdown {
+    display: none;
+    background: #3a3a3a;
+    width: auto;
+    left: 145px;
+    padding: 5px 5px 5px 5px;
+    position: absolute;
+    z-index: 999;
+    border-radius: 0px;
+    justify-content: right;
+}
+
+header ul li:hover ul.dropdown {
+    display: block;
+    align-items: center;
 }
 
 header ul li a:hover, header ul li a.active {
@@ -80,7 +107,7 @@ section {
     height: 150px;
     transform: translateY(30px);
     background: linear-gradient(to top, #917262, #8d8e62, transparent);
-    z-index: 1000;
+    z-index: 800;
 }
 
 section img {
@@ -149,6 +176,106 @@ section img#seed {
     cursor: url("Elements/droplet.png"), auto;
 }
 
+.lastpetal {
+    position: absolute;
+    max-height: 100%;
+    transform: translateY(-1000px);
+    left: 670px;
+    scale: 80%;
+    z-index: 900;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+.petal4 {
+    position: absolute;
+    max-height: 100%;
+    transform: translateY(-1000px);
+    left: 530px;
+    scale: 80%;
+    z-index: 1000;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+.petal5 {
+    position: absolute;
+    max-height: 100%;
+    transform: translateY(-1040px);
+    left: 470px;
+    scale: 80%;
+    z-index: 1000;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+.petal6 {
+    position: absolute;
+    max-height: 100%;
+    transform: translateY(-1100px);
+    left: 420px;
+    scale: 80%;
+    z-index: 1000;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+.petal7 {
+    position: absolute;
+    max-height: 100%;
+    transform: translateY(-1270px);
+    left: 490px;
+    scale: 80%;
+    z-index: 1000;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+.petal8 {
+    position: absolute;
+    max-height: 100%;
+    transform: translateY(-1350px);
+    left: 620px;
+    scale: 80%;
+    z-index: 1000;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+.petal9 {
+    position: absolute;
+    max-height: 100%;
+    transform: translateY(-1320px);
+    left: 720px;
+    scale: 80%;
+    z-index: 1000;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+.petal10 {
+    position: absolute;
+    max-height: 100%;
+    transform: translateY(-1170px);
+    left: 710px;
+    scale: 80%;
+    z-index: 1000;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+.petal11 {
+    position: absolute;
+    max-height: 100%;
+    transform: translateY(-1030px);
+    left: 740px;
+    scale: 80%;
+    z-index: 1000;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
+.petal12 {
+    position: absolute;
+    max-height: 100%;
+    transform: translateY(-1000px);
+    left: 740px;
+    scale: 80%;
+    z-index: 1000;
+    cursor: url("Elements/droplet.png"), auto;
+}
+
 .flower {
     position: absolute;
     max-height: 100%;
@@ -156,7 +283,26 @@ section img#seed {
     left: 575px;
     scale: 80%;
     z-index: 1000;
+}
+
+.hidbutton {
+    position: absolute;
+    max-height: 100%;
+    top: 0;
+    transform: translateY(260px);
+    left: 740px;
+    scale: 280%;
+    z-index: 10000;
+    padding: 5px 5px 5px 5px;
+    border-radius: 50px;
     cursor: url("Elements/droplet.png"), auto;
+}
+
+.hidbutton #button {
+    text-decoration: none;
+    line-height: 0.9;
+    font-style: italic;
+    color: white;
 }
 
 .rain {
@@ -169,8 +315,8 @@ section img#seed {
 
 .rain span {
     position: relative;
-    width: 10px;
-    height: 10px;
+    width: 30px;
+    height: 30px;
     background: lightblue;
     margin: 0 2px;
     border-radius: 50%;

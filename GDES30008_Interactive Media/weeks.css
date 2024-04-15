@@ -39,6 +39,12 @@ header .logo {
     cursor: url("Elements/droplet.png"), auto;
 }
 
+header .tag {
+    position: absolute;
+    top: 32px;
+    left: 150px;
+}
+
 header ul {
     display: flex;
     justify-content: center;
@@ -48,13 +54,39 @@ header ul {
 header ul li {
     list-style: none;
     margin-left: 20px;
+    display: inline-block;
+    position: relative;
 }
 
 header ul li a {
+    display: block;
     text-decoration: none;
     padding: 6px 15px;
     color: white;
     border-radius: 25px;
+    text-align: center;
+}
+
+header ul li ul.dropdown li {
+    display: inline-block;
+    transform: translateX(-7px);
+}
+
+header ul li ul.dropdown {
+    display: none;
+    background: #3a3a3a;
+    width: auto;
+    left: 145px;
+    padding: 5px 5px 5px 5px;
+    position: absolute;
+    z-index: 999;
+    border-radius: 0px;
+    justify-content: right;
+}
+
+header ul li:hover ul.dropdown {
+    display: block;
+    align-items: center;
 }
 
 header ul li a:hover, header ul li a.active {
@@ -124,6 +156,22 @@ header ul li a:hover, header ul li a.active {
     transform: translate(0, -50%);
     font-family: system-ui;
     display: none;
+}
+
+.item .button1{
+    z-index: 1000;
+    scale: 150%;
+    width: 100vh;
+    top: 72%;
+    left: 29%;
+    position: absolute;
+    text-align: center;
+}
+
+.item .button1 button {
+    padding: 5px 5px 5px 5px;
+    background-color: #ffe87c;
+    border-radius: 10px;
 }
 
 .slide .item:nth-child(2) .content{
