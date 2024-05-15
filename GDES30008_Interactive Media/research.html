@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/png" href="Elements/favicon.png">
+    <title>Interactive Media</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+/*
+        @font-face {
+            font-family: 'helv';
+            src: url('HelveticaNowDisplay.otf');
+        }
+
+        @font-face {
+            font-family: 'helvAlt';
+            font-feature-settings: "aalt";
+            src: url('HelveticaNowDisplay.otf');
+            font-feature-settings: "ss04";
+            unicode-range: U+0052, U+0052;
+        }
+        */
+
+        .cover {
+            page: cover;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://source.unsplash.com/random/1600x900') no-repeat center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        body {
+            /* display: flex; */
+            min-height: 100vh;
+            font-weight: 100;
+            font-family: helv, helvAlt, Arial, sans-serif;
+            font-size: 14px;
+            font-feature-settings: "ss04";
+            font-weight: lighter;
+            cursor: url("Elements/cursor.png"), auto;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            padding: 30px;
+            display: flex;
+            font-size: 20px;
+            font-weight: 500;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        header .logo {
+            scale: 30%;
+            width: 50px;
+            height: auto;
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: url("Elements/droplet.png"), auto;
+        }
+
+        header ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        header ul li {
+            list-style: none;
+            margin-left: 20px;
+            display: inline-block;
+            position: relative;
+        }
+
+        header ul li a {
+            display: block;
+            text-decoration: none;
+            padding: 6px 15px;
+            color: #fbdcfe;
+            background-color: #3a3a3a;
+            border-radius: 25px;
+            text-align: center;
+        }
+
+        header ul li ul.dropdown li {
+            display: inline-block;
+            transform: translateX(-7px);
+        }
+
+        header ul li ul.dropdown {
+            display: none;
+            background-color: #3a3a3a;
+            color: white;
+            width: auto;
+            left: 145px;
+            padding: 5px 5px 5px 5px;
+            position: absolute;
+            z-index: 999;
+            border-radius: 0px;
+            justify-content: right;
+        }
+
+        header ul li:hover ul.dropdown {
+            display: block;
+            align-items: center;
+        }
+
+        header ul li a:hover,
+        header ul li a.active {
+            background: white;
+            color: black;
+            cursor: url("Elements/droplet.png"), auto;
+        }
+
+        section {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+        }
+
+        .parent,
+        .right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            /* padding: 20px; */
+            /* this can add a frame*/
+            box-sizing: border-box;
+            max-width: 50%;
+            /* border: rgb(24, 185, 64) 1px solid; */
+        }
+
+        .parent {
+            position: relative;
+        }
+
+        .left,
+        .topdiv,
+        .bottomdiv {
+            background: url('https://source.unsplash.com/random/800x601') no-repeat center center;
+            background-size: cover;
+            /* border: blue 1px dashed; */
+            width: 100%;
+            height: 100vh;
+            /* adjust as needed */
+        }
+
+        .topdiv,
+        .bottomdiv {
+            height: 50vh;
+            width: 100%
+        }
+
+        .leftDoubleImage {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .leftDoubleImage img {
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            /* border: blue 1px solid; */
+            width: auto;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 4em;
+            /* adjust as needed */
+            left: 2em;
+            width: calc(100% - 4em - 1em);
+            /* adjust as needed */
+            color: black;
+            /* adjust as needed */
+            font-size: 1em;
+            line-height: 1.0em;
+            /* adjust as needed */
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2px 5px;
+        }
+
+        .right {
+            /* background: #f0f0f0; */
+            /* border: rgb(221, 148, 39) 1px solid; */
+            padding: 3em;
+        }
+
+        h1 {
+            font-size: 6em;
+            font-weight: lighter;
+            text-transform: uppercase;
+            text-align: left;
+            margin-bottom: 20px;
+            width: 100%;
+            line-height: 0.9em;
+        }
+
+        h2 {
+            text-align: left;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 1em;
+            width: 100%;
+        }
+
+        h2::before {
+            content: "{";
+            line-height: 2em;
+        }
+
+        h2::after {
+            content: "}";
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            font-size: 0.8em;
+            width: 100%;
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        em {
+            font-size: inherit;
+            line-height: 3em;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            * {
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+
+            body {
+                flex-direction: column;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 1cm;
+
+                /* marks: crop cross;
+            bleed: 5mm; */
+                @bottom-center {
+                    content: counter(page);
+                }
+            }
+
+            @page cover {
+                margin: 0;
+                /* Use a full size page */
+
+                /* Remove page numbers for the cover */
+                @bottom-center {
+                    content: none;
+                }
+            }
+
+            @page :left {
+                margin-left: 1cm;
+            }
+
+            @page :right {
+                margin-right: 1cm;
+            }
+
+            body {
+                width: 297mm;
+                height: 210mm;
+                margin: 0;
+                padding: 0;
+                page-break-after: always;
+                font-size: 10pt;
+            }
+
+            em {
+                text-align: left;
+            }
+
+            section {
+                min-height: calc(100% - 2cm);
+                height: 100vh;
+                display: flex;
+                page-break-inside: avoid;
+                page-break-after: always !important;
+            }
+
+            h1 {
+                font-size: 5em;
+                line-height: 0.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            div {
+                max-width: 50%;
+            }
+
+            p {
+                font-size: 0.8em;
+            }
+
+            em {
+                font-size: 10pt;
+                line-height: 3em;
+                width: 100%;
+            }
+        }
+
+        caption_url {
+            font-size: 0.8em;
+            color: #333;
+            background-color: white;
+            text-decoration: none;
+            word-wrap: break-word;
+            width: 80%;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo"><img src="Elements/small logo.png"/> </a>
+        <ul>
+            <li> <a href="playground.html"> Playground of Flowers </a></li>
+            <li> <a href="old.html"> The Old Scenery </a></li>
+            <li> <a href="research.html"> Research Journal </a></li>
+            <li> <a href="#"> How's the growth of our flower? &#x25BE; </a>
+                <ul class="dropdown">
+                    <li> <a href="weekone.html"> Week 1 </a></li>
+                    <li> <a href="weektwo.html"> Week 2 </a></li>
+                    <li> <a href="weekthree.html"> Week 3 </a></li>
+                    <li> <a href="weekfour.html"> Week 4 </a></li>
+                    <li> <a href="weekfive.html"> Week 5 </a></li>
+                    <li> <a href="weeksix.html"> Week 6 </a></li>
+                    <li> <a href="weekseven.html"> Week 7 </a></li>
+                    <li> <a href="weekeight.html"> Week 8 </a></li>
+                    <li> <a href="weeknine.html"> Week 9 </a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </header>
+
+    <section style="background-image: url(Elements/yale.jpg);">
+        <div class="parent">
+            <div class="">
+
+                <div class="caption">
+
+                    <a class="caption_url" href="https://www.moma.org/magazine/articles/870" target="_blank"> 
+                        <i> Evening Star. </i> Georgia O’Keeffe. 1917. https://www.moma.org/magazine/articles/870 </a>
+                </div>
+            </div>
+        </div>
+        <div class="right" style="background: none;color:white">
+            <div background-color: white;>
+                <h1 style="line-height: 0.9;font-size: 4em;"> 
+                    <p>  //  </p>
+                    <b> THIS IS MY RESEARCH JOURNAL, 2024 </b>
+                </h1>
+                <h2>Michelle Brigitta Putri #1388650 | GDES30008 </h2>
+                <ol>
+                    <li>Nomadic Tribe</li>
+                    <li>Mondrian, Piet</li>
+                    <li>Kwok, Raven</li>
+                    <li>Ikeda, Ryoji</li>
+                    <li>Zhu, Rozi </li>
+                    <li>Miebach, Natalie</li>
+                    <li>Rozendaal, Rafaël</li>
+                    <li>O'Keeffe, Georgia</li>
+                    <li>Looking at Something</li>
+                    <li>The Data Garden Project</li>
+                </ol>
+                </p>
+            </div>
+        </div>
+    </section>
+    <script>
+        /* THIS SCRIPT IS LOADED VIA CDN AND ESSENTIALLY READS THE .csv FILE ROW BY ROW 
+        TO GET THE VARIOUS `COMPONENTS` OF YOUR `JOURNAL` ONE `ENTRY` PER SECTION */
+        $(document).ready(function () {
+            Papa.parse('ResearchJournal.csv', {
+                download: true,
+                header: true,
+                complete: function (results) {
+                    results.data.forEach(function (row) {
+                        var section = $('<section>');
+                        var parentDiv = $('<div>').addClass('parent');
+                        var leftDiv = $('<div>').addClass(row['Class']);
+                        var topdiv = $('<div>').addClass('topdiv').css('background-image', 'url(' + row['ImageSrc'] + ')');
+                        var bottomdiv = $('<div>').addClass('bottomdiv').css('background-image', 'url(' + row['ImageSrc2'] + ')');
+                        var rightDiv = $('<div>').addClass('right');
+
+                        var h1 = $('<h1>').text(row['Title']);
+                        var h2 = $('<h2>').text(row['Description']);
+                        var p = $('<p>').text(row['BodyText']);
+                        var a = $('<a>').attr('href', '#').text(row['Link']);
+                        //var figure = $('<figure>');
+                        var img = $('<img>').attr('src', row['ImageSrc']);
+                        var img2 = $('<img>').attr('src', row['ImageSrc2']);
+                        //var figcaption = $('<figcaption>').text(row['Caption'].'\n'.$row['Caption2']);
+                        //figure.append(img, figcaption);
+                        if (row['Class'] == 'leftDoubleImage') {
+                            leftDiv.append(topdiv, bottomdiv);
+                            var captionText = 'Above: ' + row['Caption'] + ' | Below: ' + row['Caption2'];
+                            var captionDiv = $('<div>').addClass('caption').text(captionText);
+                        } else {
+                            leftDiv.css('background-image', 'url(' + row['ImageSrc'] + ')');
+                            leftDiv.css('background-size', 'cover');
+                            var captionDiv = $('<div>').addClass('caption').text(row['Caption']);
+                        }
+                        parentDiv.append(leftDiv, captionDiv);
+                        rightDiv.append(h1);
+                        var keyWords = row['Keywords'].split(', ');
+                        var span = '<p style="width:100%; line-height:2em;">';
+                        keyWords.forEach((keyword) => {
+                            span += '#' + keyword + '&nbsp;';
+                        });
+                        span += '</p>';
+                        rightDiv.append(h2, p, a, span);
+                        section.append(parentDiv, rightDiv);
+                        $('body').append(section);
+                    });
+                }
+            });
+        });
+    </script>
+<!--
+    <section>
+        <div class="parent">
+            <div class="left"></div>
+            <div class="caption">Your caption goes here, with <span class="caption_title">A Title, </span>Author, &
+                <span class="caption_url">url</span>
+            </div>
+        </div>
+        <div class="right">
+            <h1>Header</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc at bibendum dapibus, risus
+                ante dapibus est, a feugiat turpis elit id eros.</p>
+            <a href="#">Read more</a>
+        </div>
+    </section>
+-->
+</body>
+
+</html>
